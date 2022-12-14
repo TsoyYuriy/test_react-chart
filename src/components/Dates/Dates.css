@@ -1,0 +1,16 @@
+.dates {
+  margin-bottom: 50px;
+	border: 1px solid gray;
+  padding: 10px 20px;
+  border-radius: 10px;
+	height: 300px;
+}
+.dates__header {
+  display: grid;
+	grid-template-columns: 1fr 2fr 3fr 1fr;
+  border-bottom: 2px solid #4e4ec6;
+}
+.dates__items {
+	height: 250px;
+	overflow-y: scroll;
+}
