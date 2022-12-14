@@ -14,7 +14,7 @@ const App = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [dates, setDates] = useState([]);
-  // const [isActive, setIsActive] = useState(false); // Нужен для постоянного обновления сервера, возможно логика немного неправильная, но чтобы ее отладить не составит проблем 
+  // const [isActive, setIsActive] = useState(false); // Нужен для постоянного обновления сервера, возможно логика немного неправильная, но чтобы ее отладить не составит проблем. API которое дали скорей всего заглушка, так же немного не понял почему все передается GET методами, насколько я знаю то лучше всего разделять, GET, POST, DELETE 
 
   const add = async (e) => {
     e.preventDefault();
@@ -30,13 +30,11 @@ const App = () => {
 
     try {
       await	baseApi.get('/addNewForecastPlannerItem', {params: newDate});
-
     } catch (err) {
-      alert(err);
+      console.log(err, 'Произошла ошибка');
+      alert('УПС...что-то пошло не так');
     }
-
     // setIsActive(true)
-  
   };
 
   const get = async () => {
@@ -44,11 +42,10 @@ const App = () => {
       const resp = await baseApi.get ('/findAllForecastPlanerItems');
       setDates(resp.data);
     } catch (err) {
-      alert(err);
+      console.log(err, 'Произошла ошибка');
+      alert('УПС...что-то пошло не так');
     } 
-
     // setIsActive(false)
-
   };
 
   const removeDate = async (id) => {
@@ -60,9 +57,9 @@ const App = () => {
     try {
       await baseApi.get( `/deleteForecastPlannerItemById?itemId=${id}`);
     } catch (err) {
-      console.log(err);
+      console.log(err, 'Произошла ошибка');
+      alert('УПС...что-то пошло не так');
     }
-
     // setIsActive(true)
   };
   
